@@ -23,10 +23,10 @@ class TimerScreenState extends State<TimerScreen> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     timer = Timer.periodic(const Duration(milliseconds: 100), (Timer timer) {
       timer.cancel();
     });
-    WidgetsBinding.instance.addObserver(this);
   }
 
   @override
@@ -62,8 +62,18 @@ class TimerScreenState extends State<TimerScreen> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF2F2F6),
       appBar: AppBar(
-        title: const Text('タイマー'),
+        backgroundColor: const Color(0xFFF4F4F4),
+        elevation: 2,
+        title: Text(
+          isFinish ? '' : '時間を設定する',
+          style: const TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
       ),
       body: !isTimerStart
           ? TimerSetItem(
