@@ -15,20 +15,44 @@ class TimerSetItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Text('時間を設定する'),
-          CupertinoTimerPicker(
-            mode: CupertinoTimerPickerMode.hms,
-            minuteInterval: 1,
-            secondInterval: 1,
-            initialTimerDuration: const Duration(),
-            onTimerDurationChanged: onTimerDurationChanged,
+          Container(
+            width: MediaQuery.of(context).size.width - 50,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: CupertinoTimerPicker(
+              mode: CupertinoTimerPickerMode.hms,
+              minuteInterval: 1,
+              secondInterval: 1,
+              initialTimerDuration: const Duration(),
+              onTimerDurationChanged: onTimerDurationChanged,
+            ),
           ),
-          ElevatedButton(
-            onPressed: onTapStart,
-            child: const Text('スタート'),
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 100,
+            height: 60,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                foregroundColor: const Color(0xFF0B84FF),
+                backgroundColor: const Color(0xFF0B84FF),
+              ),
+              onPressed: onTapStart,
+              child: const Text(
+                'スタート',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+              ),
+            ),
           ),
         ],
       ),
