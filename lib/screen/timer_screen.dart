@@ -14,7 +14,7 @@ class TimerScreen extends StatefulWidget {
 }
 
 class TimerScreenState extends State<TimerScreen> with WidgetsBindingObserver {
-  final CountdownController controller = CountdownController(autoStart: false);
+  final CountdownController controller = CountdownController(autoStart: true);
   Timer? timer;
   bool isFinish = false;
   bool isTimerStart = false;
@@ -24,9 +24,10 @@ class TimerScreenState extends State<TimerScreen> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    timer = Timer.periodic(const Duration(milliseconds: 100), (Timer timer) {
-      timer.cancel();
-    });
+    timer = Timer.periodic(
+      const Duration(milliseconds: 100),
+      (Timer timer) => timer.cancel(),
+    );
   }
 
   @override
