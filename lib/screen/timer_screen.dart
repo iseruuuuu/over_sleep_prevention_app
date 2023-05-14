@@ -67,7 +67,7 @@ class TimerScreenState extends State<TimerScreen> with WidgetsBindingObserver {
         backgroundColor: const Color(0xFFF4F4F4),
         elevation: 2,
         title: Text(
-          isFinish ? '' : '時間を設定する',
+          isTimerStart ? 'タイマー' : '時間を設定する',
           style: const TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold,
