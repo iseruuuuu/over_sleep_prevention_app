@@ -28,9 +28,9 @@ class TimerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+          const Spacer(),
           Countdown(
             controller: controller,
             seconds: second,
@@ -44,6 +44,7 @@ class TimerItem extends StatelessWidget {
             interval: const Duration(milliseconds: 100),
             onFinished: onFinished,
           ),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -57,16 +58,30 @@ class TimerItem extends StatelessWidget {
               ),
             ],
           ),
-          //TODO バイブレーションを止めるためのボタン（あとで調整する）
-          ElevatedButton(
+          const Spacer(),
+          TextButton(
             onPressed: onStopped,
-            child: const Text('STOP'),
+            child: const Text(
+              'Stop Vibration',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-          //TODO　タイマーの設定に戻るためのボタン（あとで調整をする）
-          ElevatedButton(
+          const SizedBox(height: 50),
+          TextButton(
             onPressed: onTapResetTimer,
-            child: const Text('CANCEL'),
+            child: const Text(
+              'Back To The Timer Settings',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.red,
+              ),
+            ),
           ),
+          const Spacer(),
         ],
       ),
     );

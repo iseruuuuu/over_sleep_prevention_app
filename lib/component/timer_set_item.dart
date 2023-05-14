@@ -6,18 +6,20 @@ class TimerSetItem extends StatelessWidget {
     Key? key,
     required this.onTapStart,
     required this.onTimerDurationChanged,
+    required this.onStopped,
   }) : super(key: key);
 
-  final Function() onTapStart;
+  final VoidCallback onTapStart;
   final Function(Duration) onTimerDurationChanged;
+  final VoidCallback onStopped;
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          const Spacer(),
           Container(
             width: MediaQuery.of(context).size.width - 50,
             decoration: BoxDecoration(
@@ -32,6 +34,7 @@ class TimerSetItem extends StatelessWidget {
               onTimerDurationChanged: onTimerDurationChanged,
             ),
           ),
+          const Spacer(),
           SizedBox(
             width: MediaQuery.of(context).size.width - 100,
             height: 60,
@@ -54,6 +57,18 @@ class TimerSetItem extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(height: 50),
+          TextButton(
+            onPressed: onStopped,
+            child: const Text(
+              'Stop Vibration',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const Spacer(),
         ],
       ),
     );

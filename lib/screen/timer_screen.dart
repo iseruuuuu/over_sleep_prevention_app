@@ -92,6 +92,7 @@ class TimerScreenState extends State<TimerScreen> with WidgetsBindingObserver {
                     changeTimer.inMinutes * 60 % 2 +
                     changeTimer.inHours * 3600 % 2;
               },
+              onStopped: () => stopTimer(),
             )
           : TimerItem(
               isFinish: isFinish,
@@ -100,9 +101,7 @@ class TimerScreenState extends State<TimerScreen> with WidgetsBindingObserver {
                 isFinish = true;
                 vibration();
               },
-              onStopped: () {
-                stopTimer();
-              },
+              onStopped: () => stopTimer(),
               onTapStart: () {
                 controller.start();
                 isFinish = false;

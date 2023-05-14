@@ -13,8 +13,8 @@ class TimerButtonItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 90,
-      height: 90,
+      width: 120,
+      height: 120,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(
@@ -27,7 +27,7 @@ class TimerButtonItem extends StatelessWidget {
           style: const TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
-            fontSize: 17,
+            fontSize: 25,
           ),
         ),
       ),
